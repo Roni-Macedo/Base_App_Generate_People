@@ -1,0 +1,254 @@
+JanelaGerenciadora:
+    JanelaPrincipal:
+    Janela1:
+    Janela2:
+
+<JanelaPrincipal>:
+    name: 'janelaprincipal'
+
+    MDFloatLayout:
+
+        MDToolbar:
+            title: "[size=27][i][color=#A7FFEB]Generate-People[/size][/i][/color]"
+            left_action_items: [["menu"]]
+            right_action_items: [["close-circle", lambda x: app.fechar()]]
+            pos_hint: {'center_x': 0.5, 'center_y': 0.95}
+
+
+        Image:
+            source: 'Caveira.jpg'
+            #allow_stretch: True
+
+        MDRaisedButton:
+            text: "[size=20]Gerar-Homen-[/size][color=#A7FFEB][u]Click-Aqui![/color][/u]"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.23}
+            size_hint: 0.7, 0.1
+            on_release:
+                app.root.current = 'janela1'
+                root.manager.transition.direction = 'left'
+
+        MDRaisedButton:
+            text: "[size=20]Gerar-Mulher-[/size][color=#A7FFEB][u]Click-Aqui![/color][/u]"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.099}
+            size_hint: 0.7, 0.1
+            on_release:
+                app.root.current = 'janela2'
+                root.manager.transition.direction = 'left'
+
+<Janela1>:
+    name: 'janela1'
+
+    MDFloatLayout:
+
+        MDToolbar:
+            title: "[size=17][i][color=#A7FFEB]Generate-People[/size][/i][/color]"
+            left_action_items: [["menu"]]
+            #right_action_items: [["close-circle", lambda x: app.fechar()]]
+            pos_hint: {'center_x': 0.5, 'center_y': 0.95}
+
+        # \\\ Botao do Toolbar açao voltar p/tela principal //
+        MDFloatingActionButton
+            icon: "arrow-left-circle"
+            theme_icon_color: "Custom"
+            icon_color: app.theme_cls.primary_color
+            pos_hint: {"center_x": .9, "center_y": 0.95}
+            on_press:
+                app.root.current = 'janelaprincipal'
+                root.manager.transition.direction = 'right'
+
+        ScrollView:
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            size_hint: 0.7, 0.5
+            do_scroll_x: False
+            do_scroll_y: True
+
+            MDGridLayout:
+                size: (root.width, root.height)
+                size_hint_x: None
+                size_hint_y: 3
+                cols: 1
+                height: self.minimum_height
+
+                MDTextField:
+                    id: nome
+                    hint_text: 'Nome:'
+                    text: ''
+
+                MDTextField:
+                    id: cpf
+                    hint_text: 'Cpf:'
+                    text: ''
+
+                MDTextField:
+                    id: rg
+                    hint_text: 'Rg:'
+                    text: ''
+
+                MDTextField:
+                    id: data
+                    hint_text: 'Data:'
+                    text: ''
+
+                MDTextField:
+                    id: cep
+                    hint_text: 'Cep:'
+                    text: ''
+
+                MDTextField:
+                    id: rua
+                    hint_text: 'Rua:'
+                    text: ''
+
+                MDTextField:
+                    id: num
+                    hint_text: 'Num:'
+                    text: ''
+
+                MDTextField:
+                    id: bairro
+                    hint_text: 'Bairro:'
+                    text: ''
+
+                MDTextField:
+                    id: cidade
+                    hint_text: 'Cidade:'
+                    text: ''
+
+                MDTextField:
+                    id: estado
+                    hint_text: 'Estado:'
+                    text: ''
+
+                MDTextField:
+                    id: fixo
+                    hint_text: 'Fixo:'
+                    text: ''
+
+                MDTextField:
+                    id: celular
+                    hint_text: 'Celular:'
+                    text: ''
+
+                MDTextField:
+                    id: mail
+                    hint_text: 'E-mail:'
+                    text: ''
+
+        MDBottomAppBar:
+            MDToolbar:
+                icon: "download"
+                type: "bottom"
+                mode: "end"
+                on_action_button:
+                    on_release: root.scraping()
+
+
+<Janela2>:
+    name: 'janela2'
+
+    MDFloatLayout:
+
+        # \\\ Toolbar parte superior ///
+        MDToolbar:
+            title: "[size=17][i][color=#A7FFEB]Generate-People[/size][/i][/color]"
+            left_action_items: [["menu"]]
+            pos_hint: {'center_x': 0.5, 'center_y': 0.95}
+
+        # \\\ Botao do Toolbar açao voltar p/tela principal //
+        MDFloatingActionButton
+            icon: "arrow-left-circle"
+            theme_icon_color: "Custom"
+            icon_color: app.theme_cls.primary_color
+            pos_hint: {"center_x": .9, "center_y": 0.95}
+            on_press:
+                app.root.current = 'janelaprincipal'
+                root.manager.transition.direction = 'right'
+
+        # \\\ Um scrollview de rolagem fica no centro da tela ///
+        ScrollView:
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            size_hint: 0.7, 0.5
+            do_scroll_x: False
+            do_scroll_y: True
+
+            # \\\ add MDTextField dentro da scrollview ///
+            MDGridLayout:
+                size: (root.width, root.height)
+                size_hint_x: None
+                size_hint_y: 2
+                cols: 1
+                height: self.minimum_height
+
+                MDTextField:
+                    id: nome
+                    hint_text: 'Nome:'
+                    text: ''
+
+                MDTextField:
+                    id: cpf
+                    hint_text: 'Cpf:'
+                    text: ''
+
+                MDTextField:
+                    id: rg
+                    hint_text: 'Rg:'
+                    text: ''
+
+                MDTextField:
+                    id: data
+                    hint_text: 'Data:'
+                    text: ''
+
+                MDTextField:
+                    id: cep
+                    hint_text: 'Cep:'
+                    text: ''
+
+                MDTextField:
+                    id: rua
+                    hint_text: 'Rua:'
+                    text: ''
+
+                MDTextField:
+                    id: num
+                    hint_text: 'Num:'
+                    text: ''
+
+                MDTextField:
+                    id: bairro
+                    hint_text: 'Bairro:'
+                    text: ''
+
+                MDTextField:
+                    id: cidade
+                    hint_text: 'Cidade:'
+                    text: ''
+
+                MDTextField:
+                    id: estado
+                    hint_text: 'Estado:'
+                    text: ''
+
+                MDTextField:
+                    id: fixo
+                    hint_text: 'Fixo:'
+                    text: ''
+
+                MDTextField:
+                    id: celular
+                    hint_text: 'Celular:'
+                    text: ''
+
+                MDTextField:
+                    id: mail
+                    hint_text: 'E-mail:'
+                    text: ''
+
+        # \\\ Um Toolbar com um botao circular para gerar pessoa ///
+        MDBottomAppBar:
+            MDToolbar:
+                icon: "download"
+                type: "bottom"
+                mode: "end"
+                on_action_button:
+                    root.scraping()
