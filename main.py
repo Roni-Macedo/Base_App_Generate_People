@@ -21,7 +21,7 @@ class JanelaPrincipal(MDScreen):
 
 class Janela1(MDScreen):
     def scraping(self):
-        url = urlopen('http://www.geradordepessoas.com.br/gerador-de-pessoas?sexo=masculino&formatacao=sim')
+        url = urlopen('site')
         soup = BeautifulSoup(url.read(), "html.parser")
         data_list = []
         list_tag = soup.find_all('input')
@@ -46,7 +46,7 @@ class Janela1(MDScreen):
 
 class Janela2(MDScreen):
     def scraping(self):
-        url = urlopen('http://www.geradordepessoas.com.br/gerador-de-pessoas?sexo=feminino&formatacao=sim')
+        url = urlopen('site')
         soup = BeautifulSoup(url.read(), "html.parser")
         data_list = []
         list_tag = soup.find_all('input')
